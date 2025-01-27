@@ -7,7 +7,7 @@ let tentativas = 1;
 function exibirTextoNaTela(tag, texto) {
     let campo = document.querySelector(tag);
     campo.innerHTML = texto;
-    responsiveVoice.speak(texto, 'Brazilian Portuguese Female', {rate:1.1});
+    speakText(texto, 'pt-BR', 1.2);
 }
 
 function exibirMensagemInicial() {
@@ -75,3 +75,13 @@ function reiniciarJogo() {
     document.getElementById('reiniciar').setAttribute('disabled', true);
 }
     
+function speakText(text, lang, rate) {
+    if ('speechSynthesis' in window) {
+        let utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang;
+        utterance.rate = rate;
+        window.speechSynthesis.speak(utterance);
+        return;      
+    }
+    console.log("Web Speech API não suportada neste navegador.");
+}
