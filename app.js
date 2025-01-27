@@ -31,7 +31,7 @@ function verificarChute() {
     }
 
     if (chute > numeroSecreto) {
-        exibirTextoNaTela('p', `O número Secreto é menor ${chute}!`);
+        exibirTextoNaTela('p', `O número Secreto é menor que ${chute}!`);
     } else {
         exibirTextoNaTela('p', `O número Secreto é maior que ${chute}!`);
     }
@@ -49,8 +49,6 @@ function gerarNumeroAleatorio() {
     while (escolheNumero) {      
       numeroEscolhido = parseInt(Math.random() * numeroLimite + 1 );
       escolheNumero = listaDeNumeroSorteados.includes(numeroEscolhido);
-      console.log('Número Sorteado:', numeroEscolhido);
-      console.log('Escolhe Número:', escolheNumero);
     }
 
     listaDeNumeroSorteados.push(numeroEscolhido);
@@ -113,7 +111,7 @@ function speakText(text, lang = 'pt-BR', rate = 1.2) {
         }
 
         // Cancela qualquer fala em andamento
-        window.speechSynthesis.cancel();
+        //window.speechSynthesis.cancel();
 
         try {
             let utterance = new SpeechSynthesisUtterance(text);
